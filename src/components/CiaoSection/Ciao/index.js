@@ -19,8 +19,8 @@ class Ciao extends Component {
     }
     return (
       <article className={classStyle}>
-        <h2> id:{id} <br/>
-          {isHi ? "hi" : "bye"},{name ?? "anonim"}
+        <h2> id:{id}) 
+          {isHi ? " hi" : " bye"},{name ?? "anonim"}
         </h2>
         <button onClick={this.handleSwitch}>{isHi ? "bye" : "hi"}</button>
       </article>
