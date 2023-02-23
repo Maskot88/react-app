@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import CiaoSection from "./components/CiaoSection";
+import UserList from "./components/UserList";
 
-const App = () => {
+
+const App = (props) => {
     return (
       <>
-        <CiaoSection />
+       <UserList /> 
       </>
     );
 }
