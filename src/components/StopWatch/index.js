@@ -11,10 +11,12 @@ class StopWatch extends Component {
   }
 
   tick = () => {
-    const { time } = this.state;
-    const newTime = new Date(time.getTime());
-    newTime.setSeconds(newTime.getSeconds() + 1);
-    this.setState({ time: newTime });
+    this.setState((state, props) => {
+      const { time } = state;
+      const newTime = new Date(time.getTime());
+      newTime.setSeconds(newTime.getSeconds() + 1);
+      return { time: newTime };
+    });
   };
 
   start = () => {
@@ -36,8 +38,7 @@ class StopWatch extends Component {
   componentDidMount() {
     //this.start();
   }
-  componentDidUpdate() { 
-  }
+  componentDidUpdate() {}
   componentWillUnmount() {
     //clear side effects
     this.stop();
