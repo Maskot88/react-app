@@ -1,14 +1,16 @@
 import React from "react";
 import "./App.css";
-import UserList from "./components/UserList";
+import CiaoSection from "./components/CiaoSection";
+import UserSection from './components/UserSection';
 
 
 const App = (props) => {
-    return (
-      <>
-       <UserList /> 
-      </>
-    );
-}
+  return (
+    <>
+      <UserSection />
+      <CiaoSection />
+    </>
+  );
+};
 
 export default App;
