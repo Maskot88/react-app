@@ -1,14 +1,11 @@
 import React from "react";
 import "./App.css";
-// import CiaoSection from "./components/CiaoSection";
-import StopWatch from "./components/StopWatch";
-// import UserSection from './components/UserSection';
-
+import SignInForm from "./components/forms/SignInForm";
 
 const App = (props) => {
   return (
     <>
-      <StopWatch />
+      <SignInForm />
     </>
   );
 };
