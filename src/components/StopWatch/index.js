@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styles from "./StopWatch.style.module.css";
+import styles from "./StopWatch.module.css";
 
 class StopWatch extends Component {
   constructor(props) {
@@ -36,13 +36,14 @@ class StopWatch extends Component {
   };
 
   componentDidMount() {
-    //this.start();
   }
-  componentDidUpdate() {}
+  componentDidUpdate() {
+  }
   componentWillUnmount() {
     this.stop();
   }
   render() {
+    //console.log("render");
     const { time } = this.state;
 
     return (

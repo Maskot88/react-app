@@ -10,9 +10,11 @@ class CiaoSection extends Component {
         { id: 7, firstName: "Tom", lastName: "Rot" },
         { id: 3, firstName: "Jon", lastName: "Snow" },
         { id: 12, firstName: "Fred", lastName: "Mercury" },
-        { id: 9, firstName: "George", lastName: "Clune" },
+        { id: 9, firstName: "Georg", lastName: "Clune" },
       ],
       isDirectGrowthById: true,
+      isDirectGrowthByFirstName: true,
+      isDirectGrowthByLastName: true,
     };
   }
   sortById = () => {
@@ -21,59 +23,54 @@ class CiaoSection extends Component {
     newUsers.sort((a, b) => (isDirectGrowthById ? a.id - b.id : b.id - a.id));
     this.setState({ users: newUsers, isDirectGrowthById: !isDirectGrowthById });
   };
-  sortByName = () => {
-    const { users, isDirectGrowthByName } = this.state;
+  sortByFirstName = () => {
+    const { users, isDirectGrowthByFirstName: direction } = this.state;
     const newUsers = [...users];
     newUsers.sort((a, b) => {
-      const nameA = a.firstName.toUpperCase() + " " + a.lastName.toUpperCase();
-      const nameB = b.firstName.toUpperCase() + " " + b.lastName.toUpperCase();
-      if (isDirectGrowthByName) {
-        return nameA.localeCompare(nameB);
-      } else {
-        return nameB.localeCompare(nameA);
+      if (a.firstName > b.firstName) {
+        return direction ? 1 : -1;
       }
+      if (a.firstName < b.firstName) {
+        return direction ? -1 : 1;
+      }
+      return 0;
     });
-    this.setState({
-      users: newUsers,
-      isDirectGrowthByName: !isDirectGrowthByName,
-    });
+    this.setState({ users: newUsers, isDirectGrowthByFirstName: !direction });
   };
   sortByLastName = () => {
-    const { users, isDirectGrowthByLastName } = this.state;
+    const { users, isDirectGrowthByLastName: direction } = this.state;
     const newUsers = [...users];
     newUsers.sort((a, b) => {
-      const nameA = a.firstName.toUpperCase() + " " + a.lastName.toUpperCase();
-      const nameB = b.firstName.toUpperCase() + " " + b.lastName.toUpperCase();
-      if (isDirectGrowthByLastName) {
-        return nameA.localeCompare(nameB);
-      } else {
-        return nameB.localeCompare(nameA);
+      if (a.lastName > b.lastName) {
+        return direction ? 1 : -1;
       }
+      if (a.lastName < b.lastName) {
+        return direction ? -1 : 1;
+      }
+      return 0;
     });
-    this.setState({
-      users: newUsers,
-      isDirectGrowthByLastName: !isDirectGrowthByLastName,
-    });
+    this.setState({ users: newUsers, isDirectGrowthByLastName: !direction });
   };
+
   render() {
     const {
       users,
       isDirectGrowthById,
-      isDirectGrowthByName,
+      isDirectGrowthByFirstName,
       isDirectGrowthByLastName,
     } = this.state;
     return (
       <>
         <button onClick={this.sortById}>
-          sort by id {isDirectGrowthById ? "growth" : "less"}
+          sort by id {isDirectGrowthById ? "growth" : "decrease"}
         </button>
-        <button onClick={this.sortByName}>
-          sort by name {isDirectGrowthByName ? "growth" : "less"}
+        <button onClick={this.sortByFirstName}>
+          sort by first name {isDirectGrowthByFirstName ? "growth" : "decrease"}
         </button>
         <button onClick={this.sortByLastName}>
-          sort by last name {isDirectGrowthByLastName ? "growth" : "less"}
+          sort by first name {isDirectGrowthByLastName ? "growth" : "decrease"}
         </button>
-        <CiaoList users={users}/>
+        <CiaoList users={users} />
       </>
     );
   }

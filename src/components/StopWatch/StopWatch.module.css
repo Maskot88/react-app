@@ -9,9 +9,10 @@
   padding: 30px 0;
 
   background-color: teal;
-  color: wheat;
+  color:wheat;
 
   text-align: center;
+
 }
 
 .controlBtn {
@@ -19,9 +20,9 @@
   justify-content: space-around;
 }
 
-.btn {
+.btn{
   padding: 0.5em 1.5em;
   border: none;
-  background-color: wheat;
-  color: teal;
+  background-color:wheat ;
+  color:teal;
 }

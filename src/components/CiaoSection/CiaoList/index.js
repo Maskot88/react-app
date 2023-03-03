@@ -6,12 +6,12 @@ const CiaoList = (props) => {
     <Ciao
       key={user.id}
       id={user.id}
-      name={user.firstName + " " + user.lastName}
       classStyle="welcome"
+      name={user.firstName + " " + user.lastName}
     />
   );
-    const { users } = props;
-    return <>{users.map(mapUsers)}</>;
-}
+  const { users } = props;
+  return <>{users.map(mapUsers)}</>;
+};
 
 export default CiaoList;

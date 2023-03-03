@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import cx from "classnames";
 import styles from "./SignInForm.module.css";
 const initialState = {
   email: "",
@@ -17,20 +18,18 @@ class SignInForm extends Component {
     const { target } = event;
     console.log(target.email.value);
     console.log(target.password.value);
-    this.setState = { ...initialState };
+    this.setState({ ...initialState });
   };
 
   handleInput = ({ target: { name, value } }) =>
-    this.setState({ [name]: value, [name+'Valid']: !value.includes(' ')});
+    this.setState({ [name]: value, [name + "Valid"]: !value.includes(" ") });
 
   render() {
     const { email, password, emailValid, passwordValid } = this.state;
-    const emailClassName = `${styles.input} ${
-      emailValid ? styles.valid : styles.invalid
-    }`;
-    const passwordClassName = `${styles.input} ${
-        passwordValid ? styles.valid : styles.invalid
-      }`;
+    const emailClassName = cx(styles.input, { [styles.invalid]: !emailValid });
+    const passwordClassName = cx(styles.input, {
+      [styles.invalid]: !passwordValid,
+    });
     return (
       <form className={styles.container} onSubmit={this.handleSubmit}>
         <input
@@ -49,7 +48,7 @@ class SignInForm extends Component {
           value={password}
           onChange={this.handleInput}
         />
-        <input className={styles.input} type="submit" placeholder="send" />
+        <input className={styles.input} type="submit" value="send" />
       </form>
     );
   }
