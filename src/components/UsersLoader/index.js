@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import { getRandomUsers } from "../../api";
 
 class UserLoader extends Component {
   constructor(props) {
@@ -14,11 +14,7 @@ class UserLoader extends Component {
   load = () => {
     const { currentPage } = this.state;
     this.setState({ isPending: true });
-    fetch(
-      "https://randomuser.me/api/?results=10&seed=fd2022-2-ajax&page=" +
-        currentPage
-    )
-      .then((response) => response.json())
+    getRandomUsers({page:currentPage})
       .then((data) => this.setState({ users: data.results }))
       .catch((error) => this.setState({ error }))
       .finally(() => this.setState({ isPending: false }));
@@ -61,7 +57,5 @@ class UserLoader extends Component {
     );
   }
 }
-
-UserLoader.propTypes = {};
 
 export default UserLoader;
