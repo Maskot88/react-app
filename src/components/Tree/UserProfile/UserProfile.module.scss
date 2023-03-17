@@ -1,0 +1,7 @@
+@use '/src/common/Styles/colors' as *;
+
+.article{
+    padding: 10px;
+    background-color: $color-main;
+    color: $color-text;
+}

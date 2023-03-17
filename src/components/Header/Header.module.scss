@@ -1,0 +1,19 @@
+@use "/src/common/Styles/colors" as *;
+@use "/src/common/Styles/template" as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: $color-main;
+  color: $color-text;
+}
+
+.light {
+  @extend %light;
+}
+
+.dark {
+  @extend %dark;
+}
